@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>It&rsquo;s A Boy | Birth Statistics</title>
+    <title>It&rsquo;s A Boy | US Birth Statistics</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css" type="text/css">
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   </head>
   <body>
-    <svg class="chart"></svg>
+    <div class="wrapper">
+      <h1>2009 US Births</h1>
+      <svg class="chart"></svg>
+      <p class="citation">Source: United Nations Statistics Division; UNSD Demographic Statistics</p>
+    </div>
     <script>
       var data = [
           {month: "JAN", value: 337980},
@@ -70,7 +74,7 @@
           .attr("x", function(d) { return x(d.month); })
           .attr("y", function(d) { return y(d.value); })
           .attr("height", function(d) { return height - y(d.value); })
-          .attr("width", x.rangeBand());
+          .attr("width", x.rangeBand())
     </script>
   </body>
 </html>
