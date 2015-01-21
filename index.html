@@ -4,12 +4,17 @@
     <title>It&rsquo;s A Boy | US Birth Statistics</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <link href="http://cloud.webtype.com/css/2c0af77d-8027-4a67-85c6-7f4cc41e348c.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="wrapper">
-      <h1>US Births</h1>
-      <select name="Year">
+      <h1>2009 US Births</h1>
+      <select name="Year" title="Work-In-Progress: Choice of
+      year coming soon">
         <option value="2009">2009</option>
         <option value="2008">2008</option>
         <option value="2007">2007</option>
@@ -56,6 +61,16 @@
       <p class="citation">Source: United Nations Statistics Division; UNSD Demographic Statistics</p>
     </div>
     <script>
+      $(document).ready(function() {
+
+        $("select").tooltip({
+          position: { my: "center bottom-20px", at: "center center" }
+        });
+        $(".bar").tooltip({
+          position: { my: "left-1 bottom-10", at: "center center" }
+        });
+      });
+
       var data = [
           {month: "JAN", value: 337980},
           {month: "FEB", value: 316641},
@@ -114,10 +129,23 @@
           .data(data)
         .enter().append("rect")
           .attr("class", "bar")
+          .attr("title", function(d) { return d.value; })
           .attr("x", function(d) { return x(d.month); })
           .attr("y", function(d) { return y(d.value); })
           .attr("height", function(d) { return height - y(d.value); })
-          .attr("width", x.rangeBand())
+          .attr("width", x.rangeBand());
     </script>
+    <style>
+      .ui-tooltip {
+        font-family: "Input Mono", sans-serif;
+        font-size: 0.8em;
+        color: #444;
+        text-align: center;
+        border: 0.5px solid #444;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.5);
+        margin-bottom: 1em;
+      }
+    </style>
   </body>
 </html>

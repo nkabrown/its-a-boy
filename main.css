@@ -9,7 +9,11 @@ h1 {
 } 
 
 .bar {
-  fill: steelblue;
+  fill: #89CFF0;
+}
+
+.bar:hover {
+  fill: #FFB6C1;
 }
 
 .axis text {
@@ -31,6 +35,12 @@ h1 {
 .citation {
   font-size: 8px;
   font-family: "karlaregular", sans-serif;
+}
+
+.inputmono {
+  font-family: "Input Mono";
+  font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
