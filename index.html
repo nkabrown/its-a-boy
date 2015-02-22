@@ -129,10 +129,16 @@
           .data(data)
         .enter().append("rect")
           .attr("class", "bar")
+          .attr("height", "10px")
+          .attr("opacity", 0)
+          .transition()
+          .delay(function(d, i) { return i * 50; })
+          .duration(25)
           .attr("title", function(d) { return d.value; })
           .attr("x", function(d) { return x(d.month); })
           .attr("y", function(d) { return y(d.value); })
           .attr("height", function(d) { return height - y(d.value); })
+          .attr("opacity", 1)
           .attr("width", x.rangeBand());
     </script>
     <style>
